@@ -23,12 +23,18 @@ server '188.166.178.181', user: 'root', roles: %w{web app db}, primary: true
 #
 # Global options
 # --------------
-  set :ssh_options, {
-    keys: %w(/home/dev/.ssh/id_rsa),
-    forward_agent: false,
+  # set :ssh_options, {
+  #   keys: %w(/home/dev/.ssh/id_rsa),
+  #   forward_agent: true,
+  #   auth_methods: %w(password),
+  #     password: 'M!ghtyEgg1'
+  # }
+set :ssh_options, {
+    keys:%w(/home/root/.ssh/id_rsa),
+    forward_agent: true,
     auth_methods: %w(password),
-      password: 'M!ghtyEgg1'
-  }
+    password: 'M!ghtyEgg1'
+}
 #
 # And/or per server (overrides global)
 # ------------------------------------
