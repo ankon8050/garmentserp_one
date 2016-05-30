@@ -1,0 +1,192 @@
+<div class="row">
+      <div class="col s12">Dropdown Here</div>
+     <%= form_for(:sewings, url: sewing_search_sewings_path, method: :post) do |f| %>
+
+      <div class="col s6">
+          <label> Buyer ID</label>
+      <%= f.select :buyer_id, options_for_select(@buyer_profiles.collect{|bp| [bp.buying_house_name, bp.buyer_id]}) %>
+      </div>
+
+
+      <div class="col s6">
+          <label> Lot ID</label>
+    <%= f.select :lot_id, options_for_select(@lots.collect{|l| [l.lot_number, l.lot_id]}), {}, {"data-option-dependent" => true, "data-option-observed" => "sewings_buyer_id","data-option-url"  => "/sewings/get_buyer_profile_lots.json?buyer_id=:sewings_buyer_id", "data-option-key-method"  => :lot_id, "data-option-value-method" => :lot_number, 
+      "data-option-key-method" => :lot_id, "data-option-value-method" => :lot_number,
+ } %>
+
+      </div>
+
+    <div class="col s6">
+      <label> Style ID</label>
+    <%= f.select :style_no, options_for_select(@styles.collect{|s| [s.style_no, s.style_no]}), {}, {"data-option-dependent" => true, "data-option-observed" => "sewings_lot_id","data-option-url"  => "/sewings/get_buyer_profile_styles.json?lot_id=:sewings_lot_id", "data-option-key-method"  => :style_no, "data-option-value-method" => :style_no, 
+      "data-option-key-method" => :style_no, "data-option-value-method" => :style_no,
+ } %>
+      </div>
+
+     <div class="col s6">
+      <label> Product Name</label>
+    <%= f.select :product_name, options_for_select(@product_name.collect{|p| [p.product_name, p.product_name]}), {}, {"data-option-dependent" => true, "data-option-observed" => "sewings_style_no","data-option-url"  => "/sewings/get_buyer_profile_product_name.json?style_no=:sewings_style_no", "data-option-key-method"  => :product_name, "data-option-value-method" => :product_name, 
+      "data-option-key-method" => :product_name, "data-option-value-method" => :product_name,
+ } %>
+      </div>
+     
+     
+      <%= f.submit "Search" , :class => "btn btn-primary" %>
+<% end %>
+
+
+<%= form_tag({:controller=>"sewings", :action=>"sewing_search"},     method: :post) do %>
+  <table>                         
+ <tr>                          
+   <th>Style number </th>
+    <th>color</th>
+     <th>Order quantity</th>
+         
+     </tr>
+
+ </tr>
+<% @posts.each do |posts| %>      
+ <tr>
+   <td><%= posts.style_no %></td>  
+</br>
+  <td><%= posts.color %></td>  
+  </br>
+  <td><%= posts.order_quantity %></td> 
+  </br> 
+  
+ </tr>
+<% end %>
+</table>
+
+<% end %>
+
+
+
+<%= form_for(:sewings, url: sewing_show_one_sewings_path, method: :get) do |f| %>
+   
+           <table class="table table-bordered table-hover" id="tab_logic">
+                           <thead>
+                     
+
+
+
+                   <tr >
+
+                       <th class="text-center">
+                           Process Name<br />
+                       </th>
+                       <th class="text-center">
+                           SMV<br />
+                       </th>
+                       <th class="text-center">
+                           Target
+                       </th>
+                       <th class="text-center">
+                           Machine Name
+                       </th>
+                       <th class="text-center">
+                           Attachment
+                       </th>
+
+                        <th class="text-center">
+                           Work Station
+                       </th>
+
+                        <th class="text-center">
+                           Operator
+                       </th>
+
+                        <th class="text-center">
+                           Helper
+                       </th>
+
+                        <th class="text-center">
+                           Remark
+                       </th>
+                     
+                   </tr>
+               </thead>
+               
+               <tbody>
+            
+                     
+                   <tr id='addr0'>
+                       
+  <!--td><input type="textbox" name="cuttingline[track_codes][]" ...></td-->
+   
+                      <td>
+                       <input type="text" name='course[track_codes][]'  placeholder='Process Name' class="form-control"/>
+                       </td>
+                       <td>
+                       <input type="text"name='course1[track_codes1][]'  placeholder='SMV' class="form-control"/>
+                       </td>
+                       <td>
+                       <input type="text"name='course2[track_codes2][]' placeholder='Target' class="form-control"/>
+                       </td>
+                       <td>
+                       <input type="text" name='course3[track_codes3][]' placeholder='Machine Name' class="form-control"/>
+                       </td>
+                    
+
+                      <td>
+                       <input type="text"  name='course4[track_codes4][]' placeholder='Attachment' class="form-control"/>
+                       </td>
+
+                        <td>
+                       <input type="text"  name='course5[track_codes5][]' placeholder='Work Station' class="form-control"/>
+                       </td>
+
+                        <td>
+                       <input type="text"  name='course6[track_codes6][]' placeholder='Operator' class="form-control"/>
+                       </td>
+
+                        <td>
+                       <input type="text"  name='course7[track_codes7][]' placeholder='Helper' class="form-control"/>
+                       </td>
+
+                        <td>
+                       <input type="text" id="typeahead" name='course8[track_codes8][]' placeholder='Remark' class="form-control"/>
+                       </td>
+
+                   </tr>
+
+             <%= f.submit "Submit" , :class => "btn btn-primary" %>    
+              
+                   <tr id='addr1'> </tr>
+
+
+
+ </table>
+
+<% end %>
+   
+ 
+
+   <a id="add_row" class="btn btn-default pull-left">Add Row</a> <a id='delete_row' class="pull-right btn btn-default">Delete Row</a>
+   
+
+<script>
+
+var i=1;
+
+    $("#add_row").click(function(){
+     $('#addr'+i).html("<td><input name='course[track_codes][]' type='text' placeholder='Process Name' class='form-control input-md'  /></td> +</td><td><input name='course1[track_codes1][]''type='text' placeholder='SMV' class='form-control input-md' /></td><td><input  name='course2[track_codes2][]'' type='text' placeholder='Target'  class='form-control input-md'></td><td><input  name='course3[track_codes3][]' type='text' placeholder='Machine Name'  </td><td><input  name='course4[track_codes4][]' type='text' placeholder='Attachment'</td><td><input  name='course5[track_codes5][]' type='text' placeholder='Work Station'</td><td><input  name='course6[track_codes6][]' type='text' placeholder='Operator'</td><td><input  name='course7[track_codes7][]' type='text' placeholder='Helper'</td><td><input  name='course8[track_codes8][]' type='text' placeholder='Remark'</td>");
+
+     $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+;
+     i++; 
+ });
+    $("#delete_row").click(function(){
+        if(i>1){
+        $("#addr"+(i-1)).html('');
+        i--;
+        }
+
+    });
+    
+    $('select').change(function(){
+     $('select').material_select(); 
+ });
+
+
+    </script>

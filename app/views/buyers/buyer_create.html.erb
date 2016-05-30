@@ -1,0 +1,53 @@
+
+<%= form_tag({:controller=>"buyers", :action=>"buyer_create"}, method: :get) do %>
+<!--here action is whisch page it will go  after method functionality execution -->
+</br>
+
+  <div class="center-data">Input Buyer info:
+  	</br>
+    </br>
+  	<p>Buying house name</p>
+  </br>
+    <div class="tinput"> <%= text_field_tag(:buying_house_name) %></div>
+   	</br>
+  	<p>Authorizing merchendizer name</p>
+  </br>
+    <div class="tinput"> <%= text_field_tag(:authorized_merchandizer_name) %></div>
+   	</br>
+  	<p>Authorizer name</p>
+  </br>
+    <div class="tinput"> <%= text_field_tag(:authorizer_name) %></div>
+   	</br>
+  	<p>Buyer contact number</p>
+  </br>
+    <div class="tinput"> <%= text_field_tag(:buyer_contact_number) %></div>
+  </div>
+  </br>
+  <%= submit_tag "Submit" , :class => "btn btn-primary" %>
+<% end %>
+
+
+<!--h1>Create new buyer</h1>
+
+<#%= form_for(:buyer, url: buyer_create_buyers_path, method: :get) do |f| %>
+  <br>
+    <label> Buying House Name</label>
+      <br>
+    <#%= f.text_field :buying_house_name %>
+     <br>
+    <label> Authorized Merchandizer Name</label>
+      <br>
+     <#%= f.text_field :authorized_merchandizer_name %>
+      <br>
+   <label> Authorizer  Name</label>
+    <br>
+    <#%= f.text_field :authorizer_name %>
+      <br>
+    <label> Buyer Contact</label>
+      <br>
+    <#%= f.text_field :buyer_contact_number %>
+      <br>  <br>
+    <#%= f.submit  :class => "btn btn-primary" %>
+
+
+<#% end %>

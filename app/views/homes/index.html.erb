@@ -1,0 +1,60 @@
+<br><br><br>
+<%= form_tag({:controller=>"homes", :action=>"search_status"},     method: :get) do %>
+<!--here action is whisch page it will go  after method functionality execution -->
+  <div class="center-data">Style number:
+    <div class="tinput"> <%= text_field_tag(:style_no) %></div>
+  </div>
+  <div class="ebutton">
+    <%= submit_tag "Search" %>
+  </div>
+<% end %>
+
+<br><br><br><br>
+
+<%= button_to "Order master input", order_master_input_orders_path, class: 'btn btn-sm btn-primary' %>
+<br>
+
+<br>
+<%= button_to "New Style Input", style_master_input_styles_path, class: 'btn btn-sm btn-primary' %>
+<br>
+
+<br>
+<%= button_to "Buyer", buyer_all_buyers_path, class: 'btn btn-sm btn-primary' %>
+<br>
+
+<br>
+<%= button_to "Cutting master input", cutting_search_cuttings_path, class: 'btn btn-sm btn-primary' %>
+<br>
+
+
+<br>
+<%= button_to "Cutting lineman", cutting_lineman_cuttings_path, class: 'btn btn-sm btn-primary' %>
+<br>
+
+
+<%= button_to "Sewing master input", sewing_search_sewings_path, class: 'btn btn-sm btn-primary' %>
+<br>
+
+
+<br>
+<%= button_to "Sewings lineman", sewing_lineman_sewings_path, class: 'btn btn-sm btn-primary' %>
+<br>
+
+
+<br>
+
+<%= button_to "Finishing master input", finishing_search_finishings_path, class: 'btn btn-sm btn-primary' %>
+<br>
+
+<br>
+<%= button_to "Finishing lineman", finishing_lineman_finishings_path, class: 'btn btn-sm btn-primary' %>
+<br>
+
+
+<br>
+<%= button_to "temp", temp_enter_temps_path, class: 'btn btn-sm btn-primary' %>
+<br>
+
+
+
+   

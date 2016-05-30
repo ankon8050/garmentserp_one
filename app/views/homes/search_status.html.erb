@@ -1,0 +1,71 @@
+<label>SEWING STATUS</label>
+
+<table>                         
+ <tr>                          
+   <th>ie_day_target</th>
+    <th>hourly_target</th>
+     <th>manpower</th>
+          <th>total_smv</th>
+      
+  
+ </tr>
+<% @postsewing.each do |postsewing| %>      
+ <tr>
+   <td><%= postsewing.ie_day_target %></td>  
+</br>
+  <td><%= postsewing.hourly_target %></td>  
+  </br>
+  <td><%= postsewing.manpower %></td> 
+  </br> 
+  <td><%= postsewing.total_smv %></td>  
+  </br>
+ 
+ </tr>
+<% end %>                     
+</table>
+</br>
+
+ <label>CUTTING STATUS</label>
+
+    <table>                         
+ <tr>                          
+   <th>Table number </th>
+    <th>per_hour_target</th>
+     
+      <th>remaining_output</th>
+       <th>per_day_target</th>
+       <th>last_day_output</th>
+<th>order_quantity</th>
+          <th>buying_house_name</th>
+      <th>style_no</th>
+     
+  
+ </tr>
+ 
+<% @postcutting.each do |postcutting| %>      
+ <tr>
+   <td><%= postcutting.table_no %></td>  
+</br>
+  <td><%= postcutting.per_hour_target %></td>  
+  </br>
+
+ 
+  </br>
+   <td><%= postcutting.remaining_output %></td>  
+</br>
+ <td><%= postcutting.per_day_target %></td>  
+</br>
+ <td><%= postcutting.last_day_output %></td>  
+</br>
+<td><%= postcutting.order_quantity %></td>  
+</br>
+  <td><%= postcutting.buying_house_name %></td>  
+</br>
+  <td><%= postcutting.style_no %></td>  
+  </br>
+</br> 
+ 
+ </tr>
+<% end %> 
+               
+</table>

@@ -1,0 +1,52 @@
+<h1>Style master input</h1>
+
+<%= form_for(:styles, url: add_style_styles_path, method: :post) do |f| %>
+
+    <label> Buyer ID</label>
+    
+    <%= f.select :buyer_id, options_for_select(@buyer_profiles.collect{|bp| [bp.buying_house_name, bp.buyer_id]}) %>
+    <label> Lot ID</label>
+    <%= f.select :lot_id, options_for_select(@lots.collect{|l| [l.lot_number, l.lot_id]}), {}, {"data-option-dependent" => true, "data-option-observed" => "styles_buyer_id","data-option-url"  => "/styles/get_buyer_profile_lots.json?buyer_id=:styles_buyer_id", "data-option-key-method"  => :lot_id, "data-option-value-method" => :lot_number, 
+    	"data-option-key-method" => :lot_id, "data-option-value-method" => :lot_number,
+ } %>
+    <br>
+
+  <label> order_no</label>
+    <%= f.text_field :order_no %>
+     <br>
+    <label> Color</label>
+    <%= f.text_field :color %>
+     <br>
+<label> product_name</label>
+    <%= f.text_field :product_name %>
+     <br>
+     <br>
+  <label> style_no</label>
+    <%= f.text_field :style_no %>
+     <br>
+
+
+     <label> order_quantity</label>
+    <%= f.text_field :order_quantity %>
+     <br>
+  <label> size</label>
+    <%= f.text_field :size %>
+     <br>
+
+     <label> total</label>
+    <%= f.text_field :total %>
+     <br>
+
+    <%= f.submit "Submit" , :class => "btn btn-primary" %>
+
+    
+<script>$(document).ready(function() {
+   $('select').material_select();
+});</script>
+<% end %>
+
+
+
+
+
+ 

@@ -1,0 +1,42 @@
+<%= params["course"]["track_codes"] %>
+<%= params["course1"]["track_codes1"] %>
+<%= params["course2"]["track_codes2"] %>
+<%= params["course3"]["track_codes3"] %>
+<%= params["course4"]["track_codes4"] %>
+<%= params["course5"]["track_codes5"] %>
+<%= params["course6"]["track_codes6"] %>
+<%= params["course7"]["track_codes7"] %>
+<%= params["course8"]["track_codes8"] %>
+
+
+ <table>                         
+ <tr>                          
+   <th>Machine Name </th>
+    <th>Total machine</th>
+     <th>%Wise target</th>
+        
+
+     
+  
+ </tr>
+
+ <%= form_for(:sewings, url: sewing_machine_input_sewings_path, method: :get) do |f| %>
+<% @posts.each do |posts| %>      
+ <tr>
+   <td><%= posts.machine_name %></td>  
+</br>
+  <td><%= posts.cm %></td>  
+  </br>
+   <td><input type="textbox" name="sewingmachine[track_codes][]" ...></td>
+  </br>
+  <td><input type="textbox" name="sewingmachine1[track_codes1][]" ...></td>
+
+</br> 
+ 
+ </tr>
+<% end %> 
+ <%= f.submit "Submit" , :class => "btn btn-primary" %>       
+<% end %>                 
+</table>
+
+ 

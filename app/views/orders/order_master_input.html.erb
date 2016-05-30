@@ -1,0 +1,32 @@
+<h1>Style master input</h1>
+
+
+<%= form_for(:orders, url: add_order_orders_path, method: :post) do |f| %>
+    <label> Buyer ID</label>
+    <%= f.select :buyer_id, options_for_select(@buyer_profiles.collect{|bp| [bp.buying_house_name, bp.buyer_id]}) %>
+
+   
+    <br>
+
+  <label> lc_no</label>
+    <%= f.text_field :order_no %>
+     <br>
+    <label> lot_number</label>
+    <%= f.text_field :lot_number %>
+     <br>
+
+
+    <%= f.submit "Submit" , :class => "btn btn-primary" %>
+
+
+<% end %>
+
+
+
+
+<script>$(document).ready(function() {
+   $('select').material_select();
+});</script>
+
+
+ 

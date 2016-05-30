@@ -1,0 +1,38 @@
+    <table>                         
+ <tr>                          
+   <th>hourly_target </th>
+    <th>ie_day_target</th>
+     <th>today's output</th>
+          <th>buying_house_name</th>
+      <th>style_no</th>
+       <th>man power</th>
+              <th>Remaining </th>
+          <th>Lastday output </th>
+  
+ </tr>
+ <%= form_for(:sewings, url: sewing_show_sewings_path, method: :post) do |f| %>
+<% @posts.each do |posts| %>      
+ <tr>
+   <td><%= posts.hourly_target %></td>  
+</br>
+  <td><%= posts.ie_day_target %></td>  
+  </br>
+ <td><input type="textbox" name="cuttingline[track_codes][]" ...></td>
+  </br>
+  <td><%= posts.buying_house_name %></td>  
+</br>
+  <td><%= posts.style_no %></td>  
+  </br>
+  <td><%= posts.manpower %></td>  
+   </br>
+  <td><%= posts.remaining_target %></td>
+    </br>
+  <td><%= posts.last_day_output %></td>
+
+</br> 
+ 
+ </tr>
+<% end %> 
+ <%= f.submit "Submit" , :class => "btn btn-primary" %>       
+<% end %>                 
+</table>

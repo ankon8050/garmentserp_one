@@ -1,0 +1,43 @@
+    <table>                         
+ <tr>                          
+   <th>Table number </th>
+    <th>per_hour_target</th>
+     <th>today's output</th>
+      <th>remaining_output</th>
+       <th>per_day_target</th>
+       <th>last_day_output</th>
+<th>order_quantity</th>
+          <th>buying_house_name</th>
+      <th>style_no</th>
+     
+  
+ </tr>
+ <%= form_for(:finishings, url: finishing_show_finishings_path, method: :get) do |f| %>
+<% @posts.each do |posts| %>      
+ <tr>
+   <td><%= posts.table_no %></td>  
+</br>
+  <td><%= posts.per_hour_target %></td>  
+  </br>
+
+    <td><input type="textbox" name="cuttingline[track_codes][]" ...></td>
+  </br>
+   <td><%= posts.remaining_output %></td>  
+</br>
+ <td><%= posts.per_day_target %></td>  
+</br>
+ <td><%= posts.last_day_output %></td>  
+</br>
+<td><%= posts.order_quantity %></td>  
+</br>
+  <td><%= posts.buying_house_name %></td>  
+</br>
+  <td><%= posts.style_no %></td>  
+  </br>
+</br> 
+ 
+ </tr>
+<% end %> 
+ <%= f.submit "Submit" , :class => "btn btn-primary" %>       
+<% end %>                 
+</table>

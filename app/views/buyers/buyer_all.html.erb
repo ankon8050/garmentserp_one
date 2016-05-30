@@ -1,0 +1,28 @@
+   <table>                         
+ <tr>                          
+   <th>Buyer id </th>
+    <th>Buying house name</th>
+    
+  
+ </tr>
+<% @posts.each do |posts| %>      
+ <tr>
+   <td><%= posts.buyer_id %></td>  
+</br>
+  <td><%= posts.buying_house_name %></td>  
+  </br>
+  
+  
+ </tr>
+<% end %>                     
+</table>
+
+<br>
+<%= form_tag({:controller=>"buyers", :action=>"buyer_create"},     method: :get) do %>
+<!--here action is whisch page it will go  after method functionality execution -->
+
+   <%= submit_tag "Buyer" , :class => "btn btn-primary" %>
+
+<% end %>
+
+<br>

@@ -1,0 +1,220 @@
+<div class="row">
+      <div class="col s12">Dropdown Here</div>
+     <%= form_for(:finishings, url: finishing_search_finishings_path, method: :post) do |f| %>
+
+      <div class="col s6">
+          <label> Buyer ID</label>
+      <%= f.select :buyer_id, options_for_select(@buyer_profiles.collect{|bp| [bp.buying_house_name, bp.buyer_id]}) %>
+      </div>
+
+
+      <div class="col s6">
+          <label> Lot ID</label>
+    <%= f.select :lot_id, options_for_select(@lots.collect{|l| [l.lot_number, l.lot_id]}), {}, {"data-option-dependent" => true, "data-option-observed" => "finishings_buyer_id","data-option-url"  => "/finishings/get_buyer_profile_lots.json?buyer_id=:finishings_buyer_id", "data-option-key-method"  => :lot_id, "data-option-value-method" => :lot_number, 
+      "data-option-key-method" => :lot_id, "data-option-value-method" => :lot_number,
+ } %>
+
+      </div>
+
+      <div class="col s6">
+      <label> Style ID</label>
+    <%= f.select :style_no, options_for_select(@styles.collect{|s| [s.style_no, s.style_no]}), {}, {"data-option-dependent" => true, "data-option-observed" => "finishings_lot_id","data-option-url"  => "/finishings/get_buyer_profile_styles.json?lot_id=:finishings_lot_id", "data-option-key-method"  => :style_no, "data-option-value-method" => :style_no, 
+      "data-option-key-method" => :style_no, "data-option-value-method" => :style_no,
+ } %>
+      </div>
+
+
+  <div class="col s6">
+      <label> Color</label>
+    <%= f.select :color, options_for_select(@colors.collect{|c| [c.color, c.color]}), {}, {"data-option-dependent" => true, "data-option-observed" => "finishings_style_no","data-option-url"  => "/finishings/get_buyer_profile_colors.json?style_no=:finishings_style_no", "data-option-key-method"  => :color, "data-option-value-method" => :color, 
+      "data-option-key-method" => :color, "data-option-value-method" => :color,
+ } %>
+      </div>
+
+
+        <div class="col s6">
+      <label> Order Quantity</label>
+    <%= f.select :order_quantity, options_for_select(@order_quantity.collect{|o| [o.order_quantity, o.order_quantity]}), {}, {"data-option-dependent" => true, "data-option-observed" => "finishings_color","data-option-url"  => "/finishings/get_buyer_profile_orderq.json?color=:finishings_color", "data-option-key-method"  => :order_quantity, "data-option-value-method" => :order_quantity, 
+      "data-option-key-method" => :order_quantity, "data-option-value-method" => :order_quantity,
+ } %>
+      </div>
+
+         <div class="col s6">
+      <label> Product Name</label>
+    <%= f.select :product_name, options_for_select(@product_name.collect{|p| [p.product_name, p.product_name]}), {}, {"data-option-dependent" => true, "data-option-observed" => "finishings_order_quantity","data-option-url"  => "/finishings/get_buyer_profile_product_name.json?order_quantity=:finishings_order_quantity", "data-option-key-method"  => :product_name, "data-option-value-method" => :product_name, 
+      "data-option-key-method" => :product_name, "data-option-value-method" => :product_name,
+ } %>
+      </div>
+
+
+
+
+      
+      <%= f.submit "Search" , :class => "btn btn-primary" %>
+    </div>
+
+ 
+<% end %>
+
+
+  <%= form_for(:finishings, url: finishing_search_finishings_path, method: :post) do |f| %>
+  <table>                         
+ <tr>     
+    <th>Style ID </th>                     
+   <th>Style number </th>
+    <th>color</th>
+     <th>Order quantity</th>
+         
+     </tr>
+
+ </tr>
+<% @posts.each do |posts| %>      
+ <tr>
+
+   <td><%= posts.style_id %></td>  
+   </br>
+   <td><%= posts.style_no %></td>  
+</br>
+  <td><%= posts.color %></td>  
+  </br>
+  <td><%= posts.order_quantity %></td> 
+  </br> 
+ <td> <%= check_box("tag", posts.style_id, {checked: true}) %></td>
+ </tr>
+<% end %>
+</table>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%= form_for(:finishings, url: finishing_show_one_finishings_path, method: :get) do |f| %>
+   
+
+
+           <table class="table table-bordered table-hover" id="tab_logic">
+                           <thead>
+                     
+
+
+
+                   <tr >
+
+                       <th class="text-center">
+                           Table Number<br />
+                       </th>
+                       <th class="text-center">
+                           Total Working Hour<br />
+                       </th>
+                       <th class="text-center">
+                           Hourly Output
+                       </th>
+                       <th class="text-center">
+                           Daily Target
+                       </th>
+
+                        <th class="text-center">
+                         Process
+                       </th>
+                     
+                   </tr>
+               </thead>
+               
+               <tbody>
+            
+                     
+                   <tr id='addr0'>
+                       
+  <!--td><input type="textbox" name="cuttingline[track_codes][]" ...></td-->
+   
+                      <td>
+                       <input type="text" name='course[track_codes][]'  placeholder='Table Number' class="form-control"/>
+                       </td>
+                       <td>
+                       <input type="text"name='course1[track_codes1][]'  placeholder='Working hour' class="form-control"/>
+                       </td>
+                       <td>
+                       <input type="text"name='course2[track_codes2][]' placeholder='Hour' class="form-control"/>
+                       </td>
+                       <td>
+                       <input type="text" name='course3[track_codes3][]' placeholder='Daily Target' class="form-control"/>
+                       </td>
+
+                         <td>
+                       <input type="text" name='course4[track_codes4][]' placeholder='Process' class="form-control"/>
+                       </td>
+                          <!--td>
+                       <#%= f.select('country_id', @buyer_profiles.collect {|r| [h(r.buying_house_name)#, r.buyer_id] }, { :include_blank => false }) %>
+                        </td-->
+
+
+                   </tr>
+
+             <%= f.submit "Submit" , :class => "btn btn-primary" %>    
+              
+                   <tr id='addr1'> </tr>
+
+
+
+ </table>
+
+<% end %>
+   
+ 
+
+   <a id="add_row" class="btn btn-default pull-left">Add Row</a> <a id='delete_row' class="pull-right btn btn-default">Delete Row</a>
+   
+
+<script>
+
+var i=1;
+
+    $("#add_row").click(function(){
+     $('#addr'+i).html("<td><input name='course[track_codes][]' type='text' placeholder='Table Number' class='form-control input-md'  /></td> +</td><td><input name='course1[track_codes1][]''type='text' placeholder='Working Hour' class='form-control input-md' /></td><td><input  name='course2[track_codes2][]'' type='text' placeholder='Hour'  class='form-control input-md'></td><td><input  name='course3[track_codes3][]' type='text' placeholder='Daily Target'  </td><td><input  name='course4[track_codes4][]' type='text' placeholder='Process'  </td>");
+
+     $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+;
+     i++; 
+ });
+    $("#delete_row").click(function(){
+        if(i>1){
+        $("#addr"+(i-1)).html('');
+        i--;
+        }
+
+    });
+
+//$('#observer').change(function(){
+  // var buyer_id = $('#buyer_id').val();
+   //var lot_id = $('#lot_id').val();
+   //var url = 'custom_url?buyer_id="+buyer_id+"&lot_id='+lot_id;
+  // $.getJSON(url, function(data) {
+          //      $.each(data, function(i, object) {
+                  //  $('#style_id').append($('<option>').attr('value', object.style_id).text(object.style_no));
+               // });
+
+         // });
+
+//});
+
+ 
+$('select').change(function(){
+     $('select').material_select(); 
+ });
+</script>
