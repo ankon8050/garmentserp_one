@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.5.0'
 set :rails_env, 'development'
-set :application, 'cgms'
+set :application, 'isa'
 set :user, "root"
 
 
