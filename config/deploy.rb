@@ -14,7 +14,7 @@ set :branch, 'master'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/root/apps/cgms"
+set :deploy_to, "/root/app/isa"
 
 # Default value for :pty is false
 set :pty, true
