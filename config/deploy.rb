@@ -8,7 +8,7 @@ set :user, "root"
 # Default value for :scm is :git
 set :scm, :git
 set :repo_url, 'git@github.com:ankon8050/garmentserp_one.git'
-set :branch, 'refactor-contract'
+set :branch, 'master'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -36,7 +36,7 @@ set :keep_releases, 3
 
 set :passenger_restart_with_touch, true
 
-set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:rails_env)}" }
+#set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:rails_env)}" }
 
 namespace :deploy do
 
