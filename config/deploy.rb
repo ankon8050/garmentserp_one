@@ -44,7 +44,7 @@ namespace :deploy do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       within release_path do
         with rails_env: fetch(:rails_env) do
-          execute "sudo chmod 777 -R /root/app/isa/"
+          execute "sudo chmod 777 -R /root/app/isa"
           # If 403 forbidden error occured
           #execute "sudo chown -R root:root /home/root/apps/cgms"
         end
